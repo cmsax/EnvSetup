@@ -23,10 +23,10 @@ $thisPCRegValname = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
 $item = Get-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -ErrorAction SilentlyContinue 
 if ($item) { 
     Set-ItemProperty  -Path $thisPCIconRegPath -name $thisPCRegValname -Value 0  
-} 
+}
 else { 
     New-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -Value 0 -PropertyType DWORD | Out-Null  
-} 
+}
 
 
 # -----------------------------------------------------------------------------
@@ -71,26 +71,6 @@ Write-Host ""
 Write-Host "Installing Applications..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
 Write-Host "[WARN] Ma de in China: some software like Google Chrome require the true Internet first" -ForegroundColor Yellow
-
-if (Check-Command -cmdname 'git') {
-    Write-Host "Git is already installed, checking new version..."
-    choco update git -y
-}
-else {
-    Write-Host ""
-    Write-Host "Installing Git for Windows..." -ForegroundColor Green
-    choco install git -y
-}
-
-if (Check-Command -cmdname 'node') {
-    Write-Host "Node.js is already installed, checking new version..."
-    choco update nodejs -y
-}
-else {
-    Write-Host ""
-    Write-Host "Installing Node.js..." -ForegroundColor Green
-    choco install nodejs -y
-}
 
 
 Write-Host "Installing latest version of Python3"
