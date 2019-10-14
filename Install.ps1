@@ -27,12 +27,15 @@ if ($item) {
 else { 
     New-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -Value 0 -PropertyType DWORD | Out-Null  
 } 
+
+
 # -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Removing Edge Desktop Icon..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-$edgeLink = $env:USERPROFILE + "\Desktop\Microsoft Edge.lnk"
-Remove-Item $edgeLink
+# Write-Host ""
+# Write-Host "Removing Edge Desktop Icon..." -ForegroundColor Green
+# Write-Host "------------------------------------" -ForegroundColor Green
+# $edgeLink = $env:USERPROFILE + "\Desktop\Microsoft Edge.lnk"
+# Remove-Item $edgeLink
+
 # -----------------------------------------------------------------------------
 # To list all appx packages:
 # Get-AppxPackage | Format-Table -Property Name,Version,PackageFullName
@@ -53,31 +56,6 @@ $uwpRubbishApps = @(
 foreach ($uwp in $uwpRubbishApps) {
     Get-AppxPackage -Name $uwp | Remove-AppxPackage
 }
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Installing IIS..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-DefaultDocument -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionDynamic -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionStatic -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebSockets -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationInit -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ASPNET45 -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ServerSideIncludes
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-BasicAuthentication
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WindowsAuthentication
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Enable Windows 10 Developer Mode..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Enable Remote Desktop..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\" -Name "fDenyTSConnections" -Value 0
-Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\" -Name "UserAuthentication" -Value 1
-Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
 if (Check-Command -cmdname 'choco') {
     Write-Host "Choco is already installed, skip installation."
@@ -114,30 +92,23 @@ else {
     choco install nodejs -y
 }
 
+
+Write-Host "Installing latest version of Python3"
+choco install python3 -y
+Write-Host "Installing 7zip"
 choco install 7zip.install -y
+Write-Host "Installing Chrome browser"
 choco install googlechrome -y
-choco install potplayer -y
-choco install dotnetcore-sdk -y
-choco install ffmpeg -y
-choco install wget -y
-choco install openssl.light -y
+Write-Host "Installing VS-Code"
 choco install vscode -y
-choco install vscode-csharp -y
-choco install vscode-icons -y
-choco install vscode-mssql -y
-choco install vscode-powershell -y
-choco install sysinternals -y
-choco install notepadplusplus.install -y
-choco install dotpeek -y
-choco install linqpad -y
-choco install fiddler -y
-choco install beyondcompare -y
-choco install filezilla -y
-choco install lightshot.install -y
-choco install microsoft-teams.install -y
-choco install teamviewer -y
-choco install github-desktop -y
+Write-Host "Installing Wechat"
+choco install wechat -y
+Write-Host "Installing Tencent Tim"
+choco install tim -y
+Write-Host "Installing Adobe PDF Reader"
+choco install adobereader -y
+
 
 Write-Host "------------------------------------" -ForegroundColor Green
-Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
+Read-Host -Prompt "Meow~ Setup is done, restart is needed, press [ENTER] to restart computer."
 Restart-Computer
