@@ -30,11 +30,11 @@ else {
 
 
 # -----------------------------------------------------------------------------
-# Write-Host ""
-# Write-Host "Removing Edge Desktop Icon..." -ForegroundColor Green
-# Write-Host "------------------------------------" -ForegroundColor Green
-# $edgeLink = $env:USERPROFILE + "\Desktop\Microsoft Edge.lnk"
-# Remove-Item $edgeLink
+Write-Host ""
+Write-Host "Removing Edge Desktop Icon..." -ForegroundColor Green
+Write-Host "------------------------------------" -ForegroundColor Green
+$edgeLink = $env:USERPROFILE + "\Desktop\Microsoft Edge.lnk"
+Remove-Item $edgeLink
 
 # -----------------------------------------------------------------------------
 # To list all appx packages:
