@@ -87,6 +87,21 @@ Write-Host "Installing Tencent Tim"
 choco install tim -y
 Write-Host "Installing Adobe PDF Reader"
 choco install adobereader -y
+Write-Host "Installing Typora"
+choco install typora -y
+Write-Host "Installing Simple Sticky Notes"
+choco install simple-sticky-notes -y
+Write-Host "Installing Git"
+choco install git -y
+Write-Host "Installing Microsoft Windows Terminal"
+choco install microsoft-windows-terminal -y
+Write-Host "Installing Telegram"
+choco install telegram -y
+Write-Host "Installing DBeaver"
+choco install dbeaver -y
+Write-Host "Installing Draw.IO"
+choco install drawio -y
+
 
 
 Write-Host "------------------------------------" -ForegroundColor Green
