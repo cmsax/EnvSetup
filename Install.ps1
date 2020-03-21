@@ -73,37 +73,47 @@ Write-Host "------------------------------------" -ForegroundColor Green
 Write-Host "[WARN] Ma de in China: some software like Google Chrome require the true Internet first" -ForegroundColor Yellow
 
 
-Write-Host "Installing latest version of Python3"
-choco install python3 -y
-Write-Host "Installing 7zip"
-choco install 7zip.install -y
-Write-Host "Installing Chrome browser"
-choco install googlechrome -y
-Write-Host "Installing VS-Code"
-choco install vscode -y
-Write-Host "Installing Wechat"
-choco install wechat -y
-Write-Host "Installing Tencent Tim"
-choco install tim -y
-Write-Host "Installing Adobe PDF Reader"
-choco install adobereader -y
-Write-Host "Installing Typora"
-choco install typora -y
-Write-Host "Installing Simple Sticky Notes"
-choco install simple-sticky-notes -y
-Write-Host "Installing Git"
-choco install git -y
-Write-Host "Installing Microsoft Windows Terminal"
-choco install microsoft-windows-terminal -y
-Write-Host "Installing Telegram"
-choco install telegram -y
-Write-Host "Installing DBeaver"
-choco install dbeaver -y
-Write-Host "Installing Draw.IO"
-choco install drawio -y
+$appsToInstall = @(
+    "googlechrome",
+    "firefox",
+    "git",
+    "python3",
+    "7zip.install",
+    "vscode",
+    "adobereader",
+    "typora",
+    "simple-sticky-notes",
+    "microsoft-windows-terminal",
+    "dbeaver",
+    "powertoys",
+    "office-tool",
+    "vscode-python",
+    "vscode-golang",
+    "vscode-java",
+    "vscode-prettier",
+    "drawio",
+    "golang",
+    "bitwarden",
+    "everything",
+    "wox",
+    "freedownloadmanager",
+    "wechat",
+    "tim",
+    "telegram",
+    "shadowsocksr-windows",
+    "aria2",
+    "gimp",
+    "ffmpeg",
+    "yarn",
+    "recuva",
+    "potplayer")
 
-
+foreach ($app in $appsToInstall) {
+    Write-Host "------------------------------------" -ForegroundColor Yellow
+    Write-Host "Installing " $app -ForegroundColor Green
+    choco install $app -y
+}
 
 Write-Host "------------------------------------" -ForegroundColor Green
-Read-Host -Prompt "Meow~ Setup is done, restart is needed, press [ENTER] to restart computer."
+Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
 Restart-Computer
