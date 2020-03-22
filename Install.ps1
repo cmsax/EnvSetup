@@ -83,6 +83,7 @@ $appsToInstall = @(
     "freedownloadmanager",
     "chrome",
     "firefox",
+    "quicklook",
     "git",
     "python2",
     "python3",
