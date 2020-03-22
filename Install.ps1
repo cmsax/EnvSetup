@@ -81,7 +81,7 @@ Write-Host "[WARN] Ma de in China: some software like Google Chrome require the 
 
 $appsToInstall = @(
     "freedownloadmanager",
-    "chrome",
+    "googlechrome",
     "firefox",
     "quicklook",
     "git",
