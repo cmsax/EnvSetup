@@ -47,6 +47,12 @@ $uwpRubbishApps = @(
     "Microsoft.BingNews",
     "Microsoft.MicrosoftSolitaireCollection",
     "Microsoft.People",
+    "Microsoft.Print3D",
+    "Microsoft.ZuneMusic",
+    "Microsoft.SkypeApp",
+    "Microsoft.Print3D",
+    "Microsoft.MicrosoftEdge",
+    "Microsoft.ZuneVideo",
     "Microsoft.WindowsFeedbackHub",
     "Microsoft.YourPhone",
     "Microsoft.MicrosoftOfficeHub",
@@ -74,11 +80,12 @@ Write-Host "[WARN] Ma de in China: some software like Google Chrome require the 
 
 
 $appsToInstall = @(
-    "googlechrome",
+    "freedownloadmanager",
+    "chrome",
     "firefox",
     "git",
+    "python2",
     "python3",
-    "7zip.install",
     "vscode",
     "adobereader",
     "typora",
@@ -86,17 +93,16 @@ $appsToInstall = @(
     "microsoft-windows-terminal",
     "dbeaver",
     "powertoys",
-    "office-tool",
     "vscode-python",
     "vscode-golang",
     "vscode-java",
     "vscode-prettier",
     "drawio",
     "golang",
+    "firacode",
     "bitwarden",
     "everything",
     "wox",
-    "freedownloadmanager",
     "wechat",
     "tim",
     "telegram",
@@ -111,7 +117,7 @@ $appsToInstall = @(
 foreach ($app in $appsToInstall) {
     Write-Host "------------------------------------" -ForegroundColor Yellow
     Write-Host "Installing " $app -ForegroundColor Green
-    choco install $app -y
+    choco install -v --proxy=127.0.0.1:1080 $app -y
 }
 
 Write-Host "------------------------------------" -ForegroundColor Green
